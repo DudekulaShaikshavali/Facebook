@@ -1,5 +1,6 @@
 package pageobjects;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -7,9 +8,14 @@ import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class Loginpage {
     WebDriver driver;
+    WebDriverWait wait;
     public Loginpage(WebDriver driver){
         this.driver=driver;
         PageFactory.initElements(driver,this);
@@ -31,9 +37,9 @@ public class Loginpage {
     WebElement loginbutton_xpath;
 
     // @FindBy(css="[aria-label='Your profile']")
-    @FindBy(how = How.CSS,using ="[aria-label='Your profile']" )
+    @FindBy(how = How.XPATH,using ="//div[@class='x78zum5 x1n2onr6']" )
     @CacheLookup
-    WebElement profile_css;
+    WebElement profile;
 
 
     //@FindBy(xpath ="//span[text()='Log out']" )
@@ -54,12 +60,15 @@ public class Loginpage {
     }
 
     public void click_profile(){
-        profile_css.click();
+//        JavascriptExecutor js=(JavascriptExecutor) driver;
+//        js.executeScript("arguments[0].click();",profile);
+        Actions ac=new Actions(driver);
+        ac.contextClick(profile).click().build().perform();
     }
 
     public void clickon_logout(){
         Actions ac=new Actions(driver);
-        ac.moveToElement(logout_xpath).click().build().perform();
+    ac.moveToElement(logout_xpath).click().build().perform();
        // logout_xpath.click();
 
     }

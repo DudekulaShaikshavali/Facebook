@@ -1,4 +1,6 @@
+@selenium
 Feature: Facebook Login
+@smoke
   Scenario: Login with valid credentials
     Given User launch the browser
     When Navigate into face book url as "https://www.facebook.com/"

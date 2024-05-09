@@ -7,6 +7,8 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.logging.log4j.LogManager;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
@@ -23,8 +25,7 @@ Loginpage lp;
     @Given("User launch the browser")
     public void user_launch_the_browser() {
    logger=LogManager.getLogger(Loginpage.class);
-        WebDriverManager.edgedriver().setup();
-        driver=new EdgeDriver();
+        driver=new ChromeDriver();
         driver.manage().window().maximize();
         logger.info("browser is launched");
 
